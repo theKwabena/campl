@@ -32,19 +32,18 @@ const lesson = computed(()=>{
       <p class="text-xs text-[#444444]"> Lesson - {{lesson.number}}</p>
       <p class="text-2xl"> {{lesson.title}}</p>
       <div class="flex space-x-5 py-2">
-        <button class="underline text-xs"> Download Source Code</button>
-        <button class="underline text-xs"> Download Source Code</button>
+        <button class="underline text-sm"> Download Video</button>
+        <button class="underline text-sm"> Download Source Code</button>
       </div>
     </div>
     <div class="grid grid-cols-3">
       <div class="col-span-2">
-        <video-player :video-id="lesson.videoId" />
+        <video-player :video-id="lesson.videoId" class=""/>
       </div>
-      <div class="grid-cols-1">
+      <div class="grid-cols-1 -ml-40 space-y-3">
         <p class="text-wrap"> {{lesson.text}}</p>
-        <div class="flex flex-col py-2">
-          <button class="underline text-xs"> Download Source Code</button>
-          <button class="underline text-xs"> Download Source Code</button>
+        <div class="flex space-x-1">
+          <button class="underline text-sm border border-black p-2 px-4"> Mark As Complete</button>
         </div>
       </div>
     </div>
