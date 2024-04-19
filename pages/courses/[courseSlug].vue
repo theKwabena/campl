@@ -1,9 +1,14 @@
 <script setup lang="ts">
 
+import {useAppHead} from "~/composables/useHeadData";
+
 const route = useRoute()
 const courses = useCourse()
+const head = useAppHead()
 
-
+useHead({
+  title : `${head} | Courses`
+})
 const course = computed(()=>{
   return courses.find(
       (course)=> course.slug === route.params.courseSlug

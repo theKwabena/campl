@@ -1,7 +1,10 @@
 <script setup lang="ts">
-const route = useRoute()
-const courses = useCourse()
+import {useAppHead} from "~/composables/useHeadData";
 
+const head = useAppHead()
+const route = useRoute()
+
+const courses = useCourse()
 
 const course = computed(()=>{
   return courses.find(
@@ -9,21 +12,20 @@ const course = computed(()=>{
   )
 })
 
-
-
 const chapter = computed(()=>{
   return course.value ? course.value.chapters.find(
       (chapter)=> chapter.slug === route.params.chapterSlug
   ) : null
 })
 
+
 const lesson = computed(()=>{
   return chapter.value?  chapter.value.lessons.find((lesson)=> lesson.slug === route.params.lessonSlug) : null
 })
 
-
-
-
+useHead({
+  title : `${head} | ${course.value.title} | ${lesson.value.title}`
+})
 </script>
 
 <template>
