@@ -26,6 +26,8 @@ const lesson = computed(()=>{
 useHead({
   title : `${head} | ${course.value.title} | ${lesson.value.title}`
 })
+
+const progress = ref();
 </script>
 
 <template>
@@ -45,7 +47,8 @@ useHead({
       <div class="grid-cols-1 -ml-40 space-y-3">
         <p class="text-wrap"> {{lesson.text}}</p>
         <div class="flex space-x-1">
-          <button class="underline text-sm border border-black p-2 px-4"> Mark As Complete</button>
+          <LessonCompleteButton v-model="progress" />
+<!--          <button class="underline text-sm border border-black p-2 px-4"> Mark As Complete</button>-->
         </div>
       </div>
     </div>
