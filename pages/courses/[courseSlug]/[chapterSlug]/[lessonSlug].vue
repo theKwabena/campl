@@ -27,9 +27,12 @@ useHead({
   title : `${head} | ${course.value.title} | ${lesson.value.title}`
 })
 
-const progress = useState('progress', ()=>{
-  return []
-})
+// const progress = useState('progress', ()=>{
+//   return []
+// })
+
+const progress = useLocalStorage('progress', [])
+// This is an empty array on the server but may not be empty on the server
 
 const isLessonComplete = computed(()=>{
   if(!progress.value[chapter.value.number-1]){
@@ -44,7 +47,7 @@ const isLessonComplete = computed(()=>{
 
 function toggleComplete(){
   if(!progress.value[chapter.value.number-1]){
-    return progress.value[chapter.value.number-1] = [];
+    progress.value[chapter.value.number-1] = [];
   }
 
   progress.value[chapter.value.number-1][lesson.value.number-1] = !isLessonComplete.value;
