@@ -27,7 +27,28 @@ useHead({
   title : `${head} | ${course.value.title} | ${lesson.value.title}`
 })
 
-const progress = ref();
+const progress = useState('progress', ()=>{
+  return []
+})
+
+const isLessonComplete = computed(()=>{
+  if(!progress.value[chapter.value.number-1]){
+    return false
+  }
+  if(!progress.value[chapter.value.number-1][lesson.value.number-1]){
+    return false
+  }
+
+  return progress.value[chapter.value.number-1][lesson.value.number-1]
+})
+
+function toggleComplete(){
+  if(!progress.value[chapter.value.number-1]){
+    return progress.value[chapter.value.number-1] = [];
+  }
+
+  progress.value[chapter.value.number-1][lesson.value.number-1] = !isLessonComplete.value;
+}
 </script>
 
 <template>
@@ -47,7 +68,7 @@ const progress = ref();
       <div class="grid-cols-1 -ml-40 space-y-3">
         <p class="text-wrap"> {{lesson.text}}</p>
         <div class="flex space-x-1">
-          <LessonCompleteButton v-model="progress" />
+          <LessonCompleteButton :model-value="isLessonComplete" @update:model-value="toggleComplete" />
 <!--          <button class="underline text-sm border border-black p-2 px-4"> Mark As Complete</button>-->
         </div>
       </div>
