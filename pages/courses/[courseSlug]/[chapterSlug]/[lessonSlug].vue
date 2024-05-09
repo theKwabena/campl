@@ -1,6 +1,43 @@
 <script setup lang="ts">
 import {useAppHead} from "~/composables/useHeadData";
 
+
+definePageMeta({
+  validate({params}){
+    const courses =useCourse();
+
+    const course =courses.find((course)=> course.slug==params.courseSlug)
+
+    if(!course){
+      throw createError({
+        statusCode: 404,
+        message: 'Course not found'
+      })
+    }
+
+    const chapter = course.chapters.find(
+        (chapter) => chapter.slug == params.chapterSlug
+    )
+
+    if(!chapter){
+      throw createError({
+        statusCode: 404,
+        message: 'Chapter not found'
+      })
+    }
+
+    const lesson = chapter.lessons.find((lesson)=> lesson.slug == params.lessonSlug)
+
+    if(!lesson){
+      throw createError({
+        statusCode: 404,
+        message: "Lesson not found"
+      })
+    }
+    return true
+  }
+})
+
 const head = useAppHead()
 const route = useRoute()
 
@@ -19,6 +56,7 @@ const chapter = computed(()=>{
       (chapter)=> chapter.slug === route.params.chapterSlug
   ) : null
 })
+
 
 
 

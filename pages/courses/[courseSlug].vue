@@ -17,6 +17,13 @@ const course = computed(()=>{
   )
 })
 
+if(!course.value){
+  throw createError({
+    statusCode: 404,
+    message: 'Course not found'
+  })
+}
+
 const chapters = computed(()=>{
   return course.value ? course.value.chapters : null
 })
