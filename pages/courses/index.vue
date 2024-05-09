@@ -17,7 +17,6 @@ useHead({
     <ul v-for="course in courses" :key="course.id">
       <li>
         <NuxtLink :to="`/courses/${course.slug}`"> {{course.title}} </NuxtLink>
-
       </li>
     </ul>
   </div>

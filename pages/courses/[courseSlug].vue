@@ -1,6 +1,7 @@
 <script setup lang="ts">
 
 import {useAppHead} from "~/composables/useHeadData";
+import type {ComputedRef} from "vue";
 
 const route = useRoute()
 const courses = useCourse()
@@ -20,7 +21,9 @@ const chapters = computed(()=>{
   return course.value ? course.value.chapters : null
 })
 
-
+function resetError(error: { value: null; }){
+  error.value = null;
+}
 
 // const lessons = computed(()=>{
 //   return chapters.value ? chapters
@@ -56,7 +59,17 @@ const chapters = computed(()=>{
 
 
         </div>
-        <NuxtPage v-else></NuxtPage>
+        <NuxtErrorBoundary v-else>
+          <NuxtPage></NuxtPage>
+          <template #error="{ error }">
+            <p> Oh something happenend. Can't continue</p>
+            <code> {{ error }}</code>
+            <button @click="resetError(error)">
+              Reset Error
+            </button>
+          </template>
+        </NuxtErrorBoundary>
+
       </div>
 
     </div>

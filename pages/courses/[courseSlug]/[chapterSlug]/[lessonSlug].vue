@@ -74,7 +74,10 @@ function toggleComplete(){
       <div class="grid-cols-1 -ml-40 space-y-3">
         <p class="text-wrap"> {{lesson.text}}</p>
         <div class="flex space-x-1">
-          <LessonCompleteButton :model-value="isLessonComplete" @update:model-value="toggleComplete" />
+          <LessonCompleteButton
+              :model-value="isLessonComplete"
+              @update:model-value="toggleComplete"
+          />
 <!--          <button class="underline text-sm border border-black p-2 px-4"> Mark As Complete</button>-->
         </div>
       </div>
