@@ -6,17 +6,20 @@ const route = useRoute()
 
 const courses = useCourse()
 
+
 const course = computed(()=>{
   return courses.find(
       (course)=> course.slug === route.params.courseSlug
   )
 })
 
+
 const chapter = computed(()=>{
   return course.value ? course.value.chapters.find(
       (chapter)=> chapter.slug === route.params.chapterSlug
   ) : null
 })
+
 
 
 const lesson = computed(()=>{

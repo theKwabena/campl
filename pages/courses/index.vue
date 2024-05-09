@@ -3,6 +3,8 @@ import {useAppHead} from "~/composables/useHeadData";
 
 const courses = useCourse()
 const head  = useAppHead()
+
+
 useHead({
   title : `${head} - Free Programming Lessons`
 })

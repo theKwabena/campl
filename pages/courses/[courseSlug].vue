@@ -6,6 +6,7 @@ const route = useRoute()
 const courses = useCourse()
 const head = useAppHead()
 
+console.log(courses.length)
 useHead({
   title : `${head} | Courses`
 })
