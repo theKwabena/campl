@@ -3,7 +3,7 @@ import {useAppHead} from "~/composables/useHeadData";
 
 
 definePageMeta({
-  middleware: function({params},from){
+  middleware: [function({params},from){
     const courses =useCourse();
 
     const course =courses.find((course)=> course.slug==params.courseSlug)
@@ -41,7 +41,7 @@ definePageMeta({
           })
       );
     }
-  }
+  }, 'auth']
   // validate({params}){
   //   const courses =useCourse();
   //
