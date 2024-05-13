@@ -4,6 +4,10 @@ export default defineNuxtConfig({
   svgo: {
     autoImportPath: false
   },
+
+  supabase: {
+    redirect: false,
+  },
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
   postcss: {
