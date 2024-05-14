@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 const user = useSupabaseUser();
 
+const { auth }  = useSupabaseClient();
 
 const username = computed(()=> {
   return user.value?.user_metadata.user_name
@@ -10,6 +11,15 @@ const user_avatar  = computed(()=>{
   return user.value?.user_metadata.avatar_url
 })
 
+
+const logout = async () =>{
+  const { error } = await auth.signOut();
+
+  if(error){
+    console.log(error)
+    return;
+  }
+}
 
 
 </script>
@@ -27,7 +37,7 @@ const user_avatar  = computed(()=>{
 
     <div class="flex flex-col justify-center items-center" v-else>
       <img :src="user_avatar" alt="user-avatar" class="w-10 h-10 rounded-full" />
-      <p class="text-xs"> {{ username }}</p>
+      <button class="text-xs" @click="logout"> Logout</button>
     </div>
   </div>
 </template>

@@ -41,7 +41,7 @@ definePageMeta({
           })
       );
     }
-  }]
+  }, 'auth']
   // validate({params}){
   //   const courses =useCourse();
   //
