@@ -1,7 +1,8 @@
 <script setup lang="ts">
 
-import {useAppHead} from "~/composables/useHeadData";
-import type {ComputedRef} from "vue";
+definePageMeta({
+  middleware: ['auth']
+})
 
 const route = useRoute()
 const courses = useCourse()

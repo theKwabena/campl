@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import {useAppHead} from "~/composables/useHeadData";
+definePageMeta({
+  middleware: ['auth']
+})
 
 const courses = useCourse()
 const head  = useAppHead()

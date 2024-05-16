@@ -30,7 +30,7 @@ const logout = async () =>{
       <h1> THE SCHOOL</h1>
     </div>
     <div class="flex" v-if="!user">
-      <button class="border-2 px-16 border-black rounded-sm py-3"> Courses</button>
+      <NuxtLink to="courses" class="border-2 px-16 border-black rounded-sm py-3"> Courses</NuxtLink>
       <button class="border-2 px-16 border-black rounded-sm py-3"> About</button>
       <button class="border-2 px-16 border-black rounded-sm py-3"> Pricing</button>
     </div>

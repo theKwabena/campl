@@ -5,9 +5,19 @@ definePageMeta({
 
 const supabase = useSupabaseClient();
 
+const user = useSupabaseUser();
+const { query } = useRoute()
+
+watchEffect(async ()=>{
+  if(user.value){
+    await navigateTo(query.redirectTo as string, {replace: true})
+  }
+})
 const login = async () => {
+  const redirectTo = `${window.location.origin}/${query.redirectTo}`
   const { error } = await supabase.auth.signInWithOAuth({
-    provider: 'github'
+    provider: 'github',
+    options: {redirectTo}
   })
 
   if (error){
