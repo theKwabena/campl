@@ -45,16 +45,16 @@ definePageMeta({
   // validate({params}){
   //   const courses =useCourse();
   //
-  //   const course =courses.find((course)=> course.slug==params.courseSlug)
+  //   const courses =courses.find((courses)=> courses.slug==params.courseSlug)
   //
-  //   if(!course){
+  //   if(!courses){
   //     throw createError({
   //       statusCode: 404,
   //       message: 'Course not found'
   //     })
   //   }
   //
-  //   const chapter = course.chapters.find(
+  //   const chapter = courses.chapters.find(
   //       (chapter) => chapter.slug == params.chapterSlug
   //   )
   //
@@ -65,9 +65,9 @@ definePageMeta({
   //     })
   //   }
   //
-  //   const lesson = chapter.lessons.find((lesson)=> lesson.slug == params.lessonSlug)
+  //   const [lesson] = chapter.lessons.find(([lesson])=> [lesson].slug == params.lessonSlug)
   //
-  //   if(!lesson){
+  //   if(![lesson]){
   //     throw createError({
   //       statusCode: 404,
   //       message: "Lesson not found"
