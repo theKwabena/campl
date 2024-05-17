@@ -1,29 +1,6 @@
 import courseData from "~/composables/courseData";
+import {type Lesson, type Chapter, type Course} from "~/types/course"
 
-
-type Lesson = {
-  title: string;
-  slug: string;
-  downloadUrl: string;
-  videoId: number;
-  text: string;
-  sourceUrl?: string; // Make it optional
-}
-
-type Chapter = {
-  title: string;
-  slug: string;
-  number: number;
-  lessons: Lesson[];
-}
-
-
-type Course = {
-  title: String;
-  id: number;
-  chapters: Chapter[];
-  slug: string
-}
 
 
 
