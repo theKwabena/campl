@@ -1,23 +1,48 @@
 import courseData from "~/server/courseData";
 import {type Lesson, type Chapter, type Course} from "~/types/course"
 
-export function findCourse(courseSlug: string): Course | undefined{
-    return courseData.courses.find((course : Course)=>(
+export function findCourse(courseSlug: string): Course{
+    const course:Course | undefined = courseData.courses.find((course : Course)=>(
         course.slug == courseSlug
     ))
+    if (!course){
+        throw createError({
+            status: 404,
+            message: `Course not found`
+        })
+    }
+    return course
 }
 
-export function findChapter(courseSlug : string, chapterSlug: string){
-    const course: Course | undefined = findCourse(courseSlug)
-    return course?.chapters.find((chapter : Chapter)=>(
+export function findChapter(courseSlug : string, chapterSlug: string) : Chapter{
+    const course: Course  = findCourse(courseSlug)
+
+    const chapter :  Chapter | undefined = course.chapters.find((chapter : Chapter)=>(
         chapter.slug==chapterSlug
     ))
+    if (!chapter){
+        throw createError({
+            status: 404,
+            message: `Chapter not found`
+        })
+    }
+
+    return chapter
 }
 
-export function findLesson(courseSlug: string, chapterSlug: string, lessonSlug:string): Lesson|undefined {
-    const chapter : Chapter | undefined = findChapter(courseSlug,chapterSlug)
+export function findLesson(courseSlug: string, chapterSlug: string, lessonSlug:string): Lesson {
+    const chapter : Chapter = findChapter(courseSlug,chapterSlug)
 
-    return chapter?.lessons.find((lesson : Lesson)=>(
+    const lesson : Lesson | undefined = chapter.lessons.find((lesson : Lesson)=>(
         lesson.slug == lessonSlug
     ))
+
+    if (!lesson){
+        throw createError({
+            status: 404,
+            message: `Lesson not found`
+        })
+    }
+
+    return lesson
 }
