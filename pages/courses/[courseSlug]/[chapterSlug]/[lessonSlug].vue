@@ -54,18 +54,18 @@ definePageMeta({
   //     })
   //   }
   //
-  //   const chapter = courses.chapters.find(
-  //       (chapter) => chapter.slug == params.chapterSlug
+  //   const chapters = courses.chapters.find(
+  //       (chapters) => chapters.slug == params.chapterSlug
   //   )
   //
-  //   if(!chapter){
+  //   if(!chapters){
   //     throw createError({
   //       statusCode: 404,
   //       message: 'Chapter not found'
   //     })
   //   }
   //
-  //   const [lesson] = chapter.lessons.find(([lesson])=> [lesson].slug == params.lessonSlug)
+  //   const [lesson] = chapters.lessons.find(([lesson])=> [lesson].slug == params.lessonSlug)
   //
   //   if(![lesson]){
   //     throw createError({

@@ -7,7 +7,7 @@ export default {
             chapters: [
                 {
                     title: 'Chapter 1',
-                    slug: '1-chapter-1',
+                    slug: '1-chapters-1',
                     number: 1,
                     lessons: [
                         {
@@ -48,7 +48,7 @@ export default {
                 },
                 {
                     title: 'Chapter 2',
-                    slug: '2-chapter-2',
+                    slug: '2-chapters-2',
                     number: 2,
                     lessons: [
                         {
@@ -98,7 +98,7 @@ export default {
                 },
                 {
                     title: 'Chapter 3',
-                    slug: '3-chapter-3',
+                    slug: '3-chapters-3',
                     number: 3,
                     lessons: [
                         {

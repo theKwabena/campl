@@ -11,9 +11,5 @@ export default defineEventHandler((event) => {
 
     const lesson = findLesson(courseSlug,chapterSlug,lessonSlug)
 
-    if(chapter){
-        return chapter.lessons
-    } else {
-        return []
-    }
+    return lesson
 })
