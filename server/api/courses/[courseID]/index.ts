@@ -6,5 +6,4 @@ export default defineEventHandler((event) => {
     return courses.courses.find((course)=>{
         return course.id = courseID
     })
-
 })
