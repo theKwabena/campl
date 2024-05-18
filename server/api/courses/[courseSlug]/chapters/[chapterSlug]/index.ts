@@ -1,17 +1,9 @@
 import courses from "~/server/courseData"
 import {findChapter, findCourse} from "~/server/helper";
+import {Chapter} from "~/types/course";
 
-export default defineEventHandler((event) => {
+export default defineEventHandler((event) : Chapter => {
+    // @ts-ignore
     const {courseSlug, chapterSlug} = event.context.params
-
-    const course = findCourse(courseSlug)
-
-
-    const chapter = findChapter(courseSlug,chapterSlug)
-
-    if(chapter){
-        return chapter
-    } else {
-        return []
-    }
+    return findChapter(courseSlug,chapterSlug)
 })
