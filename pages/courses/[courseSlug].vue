@@ -5,15 +5,15 @@ definePageMeta({
 })
 
 const route = useRoute()
-const courses = useCourse()
+const courses = await useCourse()
 const head = useAppHead()
 
-console.log(courses.length)
+console.log(courses.value.length)
 useHead({
   title : `${head} | Courses`
 })
 const course = computed(()=>{
-  return courses.find(
+  return courses.value.find(
       (course)=> course.slug === route.params.courseSlug
   )
 })

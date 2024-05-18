@@ -3,7 +3,7 @@ definePageMeta({
   middleware: ['auth']
 })
 
-const courses = useCourse()
+const courses = await useCourse()
 const head  = useAppHead()
 
 

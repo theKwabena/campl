@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type {Course} from "~/types/course";
+
 const route = useRoute();
 const { courseSlug, chapterSlug, lessonSlug } = route.params;
 
@@ -6,10 +8,10 @@ const lesson = await useLesson(courseSlug as string,chapterSlug as string,lesson
 console.log(lesson)
 
 definePageMeta({
-  middleware: [function({params},from){
-    const courses = useCourse();
+  middleware: [ async  function({params},from){
+    const courses = await useCourse();
 
-    const course =courses.find((course)=> course.slug==params.courseSlug)
+    const course =courses.value.find((course : Course)=> course.slug==params.courseSlug)
 
     if(!course){
       return abortNavigation(
@@ -83,11 +85,11 @@ definePageMeta({
 const head = useAppHead()
 
 
-const courses = useCourse()
+const courses = await useCourse()
 
 
 const course = computed(()=>{
-  return courses.find(
+  return courses.value.find(
       (course)=> course.slug === route.params.courseSlug
   )
 })

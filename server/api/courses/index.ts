@@ -1,5 +1,7 @@
 import courses from "~/server/courseData"
+import {allCourses} from "~/server/helper";
 
 export default defineEventHandler((event) => {
-   return courses
+   const { meta } = getQuery(event)
+   return allCourses(meta as boolean)
 })

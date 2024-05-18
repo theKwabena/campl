@@ -8,6 +8,37 @@ import {
     OutlineCourse,
     CourseMeta
 } from "~/types/course"
+import courses from "~/server/api/courses";
+
+export function allCourses(meta: Boolean = false): OutlineCourse[] {
+    if (meta){
+        return courseData.courses.reduce((prev:  OutlineCourse[], next: OutlineCourse) => {
+            const chapters : OutlineChapter[] = next.chapters.map((chapter) => {
+                const lessons : OutlineBase[] = chapter.lessons.map((lesson: OutlineBase)=>({
+                    title: lesson.title,
+                    slug: lesson.slug,
+                    number: lesson.number
+                }))
+                return {
+                    title: chapter.title,
+                    slug: chapter.slug,
+                    number: chapter.number,
+                    lessons: lessons
+
+                }
+            })
+            const course = {
+                title: next.title,
+                slug: next.slug,
+                id: next.id,
+                chapters: chapters
+            }
+
+            return [...prev, course];
+        }, [])
+    }
+    return courseData.courses
+}
 
 export function findCourse(courseSlug: string, meta: Boolean = false): Course | CourseMeta{
     const course:Maybe<Course> = courseData.courses.find((course : Course)=>(
