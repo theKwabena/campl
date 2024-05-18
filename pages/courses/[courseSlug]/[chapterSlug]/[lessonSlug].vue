@@ -1,6 +1,9 @@
 <script setup lang="ts">
-import {useAppHead} from "~/composables/useHeadData";
+const route = useRoute();
+const { courseSlug, chapterSlug, lessonSlug } = route.params;
 
+const lesson = await useLesson(courseSlug as string,chapterSlug as string,lessonSlug as string)
+console.log(lesson)
 
 definePageMeta({
   middleware: [function({params},from){
@@ -78,7 +81,7 @@ definePageMeta({
 })
 
 const head = useAppHead()
-const route = useRoute()
+
 
 const courses = useCourse()
 
@@ -95,17 +98,17 @@ const chapter = computed(()=>{
       (chapter)=> chapter.slug === route.params.chapterSlug
   ) : null
 })
+//
+//
+//
+//
+// const lesson = computed(()=>{
+//   return chapter.value?  chapter.value.lessons.find((lesson)=> lesson.slug === route.params.lessonSlug) : null
+// })
 
-
-
-
-const lesson = computed(()=>{
-  return chapter.value?  chapter.value.lessons.find((lesson)=> lesson.slug === route.params.lessonSlug) : null
-})
-
-useHead({
-  title : `${head} | ${course.value.title} | ${lesson.value.title}`
-})
+// useHead({
+//   title : `${head} | ${course.value.title} | ${lesson.value.title}`
+// })
 
 // const progress = useState('progress', ()=>{
 //   return []
