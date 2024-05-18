@@ -2,6 +2,7 @@ export type Lesson = {
     title: string;
     slug: string;
     downloadUrl: string;
+    number: number;
     videoId: number;
     text: string;
     sourceUrl?: string; // Make it optional
@@ -16,8 +17,31 @@ export type Chapter = {
 
 
 export type Course = {
-    title: String;
+    title: string;
     id: number;
     chapters: Chapter[];
     slug: string
 }
+
+export type OutlineCourse = {
+    title: string;
+    id: number;
+    chapters: OutlineChapter[];
+    slug: string;
+}
+
+export type OutlineBase = {
+    title: string;
+    slug: string;
+    number: number;
+}
+
+export type CourseMeta = {
+    title: string;
+    chapters: OutlineChapter[]
+}
+
+export type OutlineChapter = OutlineBase & {
+    lessons : OutlineBase[]
+}
+

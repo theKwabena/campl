@@ -1,7 +1,15 @@
 import courseData from "~/server/courseData";
-import {type Lesson, type Chapter, type Course} from "~/types/course"
+import {
+    type Lesson,
+    type Chapter,
+    type Course,
+    OutlineChapter,
+    OutlineBase,
+    OutlineCourse,
+    CourseMeta
+} from "~/types/course"
 
-export function findCourse(courseSlug: string): Course{
+export function findCourse(courseSlug: string, meta: Boolean = false): Course | CourseMeta{
     const course:Maybe<Course> = courseData.courses.find((course : Course)=>(
         course.slug == courseSlug
     ))
@@ -11,14 +19,37 @@ export function findCourse(courseSlug: string): Course{
             message: `Course not found`
         })
     }
+    if (meta){
+        const chapters: OutlineChapter[] = course.chapters.reduce((prev : OutlineChapter[], next : Chapter) => {
+            const lessons : OutlineBase[] = next.lessons.map((lesson)=>({
+                    title: lesson.title,
+                    slug: lesson.slug,
+                    number: lesson.number
+                })
+            );
+            const chapter : OutlineChapter = {
+                title: next.title,
+                slug: next.slug,
+                number: next.number,
+                lessons: lessons
+            };
+            return [...prev, chapter];
+        }, []);
+
+        return {
+            title: course.title,
+            chapters: chapters
+        }
+
+
+    }
     return course
 }
 
-export function findChapter(courseSlug : string, chapterSlug: string) : Chapter{
-    const course: Course  = findCourse(courseSlug)
-
-    const chapter :  Maybe<Chapter> = course.chapters.find((chapter : Chapter)=>(
-        chapter.slug==chapterSlug
+export function findChapter(courseSlug : string, chapterSlug: string) : Chapter {
+    const course: Course   = findCourse(courseSlug) as Course
+    const chapter : Maybe<Chapter> =course.chapters.find((chapter)=>(
+        chapter.slug == chapterSlug
     ))
     if (!chapter){
         throw createError({
@@ -31,9 +62,7 @@ export function findChapter(courseSlug : string, chapterSlug: string) : Chapter{
 }
 
 export function findLesson(courseSlug: string, chapterSlug: string, lessonSlug:string): Lesson {
-    const chapter : Chapter = findChapter(courseSlug,chapterSlug)
-
-    const lesson : Maybe<Lesson> = chapter.lessons.find((lesson : Lesson)=>(
+    const lesson : Maybe<Lesson> = findChapter(courseSlug,chapterSlug).lessons.find((lesson : Lesson)=>(
         lesson.slug == lessonSlug
     ))
 
@@ -46,3 +75,5 @@ export function findLesson(courseSlug: string, chapterSlug: string, lessonSlug:s
 
     return lesson
 }
+
+
