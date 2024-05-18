@@ -1,4 +1,4 @@
-import courses from "~/server/courseData"
+
 import {findCourse} from "~/server/helper";
 import {Chapter} from "~/types/course";
 

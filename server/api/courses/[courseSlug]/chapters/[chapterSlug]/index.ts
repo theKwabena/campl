@@ -1,5 +1,4 @@
-import courses from "~/server/courseData"
-import {findChapter, findCourse} from "~/server/helper";
+import {findChapter} from "~/server/helper";
 import {Chapter} from "~/types/course";
 
 export default defineEventHandler((event) : Chapter => {
