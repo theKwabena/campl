@@ -12,8 +12,10 @@ generator client {
 model Course {
   id  BigInt @id @unique @default(autoincrement())
   title String
+  slug String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  chapters Chapter[]
 }
 
 model Chapter {
@@ -21,8 +23,11 @@ model Chapter {
   title String
   slug String
   number Int
+  lessons  Lesson[]
   createdAt DateTime @default(now())
   updateAt  DateTime @updatedAt
+  Course Course @relation(fields: [courseId], references: [id])
+  courseId BigInt
 }
 
 model Lesson {
@@ -36,5 +41,7 @@ model Lesson {
   sourceUrl String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  chapter Chapter @relation(fields: [chapterId], references: [id])
+  chapterId BigInt
 }
 
