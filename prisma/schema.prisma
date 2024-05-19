@@ -10,7 +10,7 @@ generator client {
 }
 
 model Course {
-  id  BigInt @id @unique @default(autoincrement())
+  id  Int @id @unique @default(autoincrement())
   title String
   slug String
   createdAt DateTime @default(now())
@@ -19,7 +19,7 @@ model Course {
 }
 
 model Chapter {
-  id BigInt @id @unique @default(autoincrement())
+  id Int @id @unique @default(autoincrement())
   title String
   slug String
   number Int
@@ -27,11 +27,11 @@ model Chapter {
   createdAt DateTime @default(now())
   updateAt  DateTime @updatedAt
   Course Course @relation(fields: [courseId], references: [id])
-  courseId BigInt
+  courseId Int
 }
 
 model Lesson {
-  id BigInt @id @unique @default(autoincrement())
+  id Int @id @unique @default(autoincrement())
   title String
   slug String
   number Int
@@ -42,6 +42,6 @@ model Lesson {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   chapter Chapter @relation(fields: [chapterId], references: [id])
-  chapterId BigInt
+  chapterId Int
 }
 

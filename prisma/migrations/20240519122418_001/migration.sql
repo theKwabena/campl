@@ -1,7 +1,8 @@
 -- CreateTable
 CREATE TABLE "Course" (
-    "id" BIGSERIAL NOT NULL,
+    "id" SERIAL NOT NULL,
     "title" TEXT NOT NULL,
+    "slug" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -10,20 +11,20 @@ CREATE TABLE "Course" (
 
 -- CreateTable
 CREATE TABLE "Chapter" (
-    "id" BIGSERIAL NOT NULL,
+    "id" SERIAL NOT NULL,
     "title" TEXT NOT NULL,
     "slug" TEXT NOT NULL,
     "number" INTEGER NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updateAt" TIMESTAMP(3) NOT NULL,
-    "courseId" BIGINT NOT NULL,
+    "courseId" INTEGER NOT NULL,
 
     CONSTRAINT "Chapter_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "Lesson" (
-    "id" BIGSERIAL NOT NULL,
+    "id" SERIAL NOT NULL,
     "title" TEXT NOT NULL,
     "slug" TEXT NOT NULL,
     "number" INTEGER NOT NULL,
@@ -33,7 +34,7 @@ CREATE TABLE "Lesson" (
     "sourceUrl" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
-    "chapterId" BIGINT NOT NULL,
+    "chapterId" INTEGER NOT NULL,
 
     CONSTRAINT "Lesson_pkey" PRIMARY KEY ("id")
 );

@@ -47,9 +47,7 @@ const login = async () => {
         >
       </div>
       <button class="bg-black" @click.prevent>
-        <span
-            class="block p-1 bg-amber-500 -translate-x-[3px] -translate-y-1 active:translate-x-0 active:translate-y-0"
-        >
+        <span class="block p-1 bg-amber-500 -translate-x-[3px] -translate-y-1 active:translate-x-0 active:translate-y-0">
             Login
         </span>
 

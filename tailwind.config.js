@@ -11,7 +11,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        'def' : '#f6edf1'
+        'def' : '#f6edf1',
+        'home': '#9ce1fb'
       }
     },
     fontFamily : {

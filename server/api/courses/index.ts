@@ -1,7 +1,14 @@
 import courses from "~/server/courseData"
 import {allCourses} from "~/server/helper";
+import { PrismaClient } from "@prisma/client";
 
-export default defineEventHandler((event) => {
+const prisma = new PrismaClient();
+
+export default defineEventHandler( async (event) => {
    const { meta } = getQuery(event)
-   return allCourses(meta as boolean)
+
+
+   // return allCourses(meta as boolean)
+   return prisma.course.findMany();
+
 })
