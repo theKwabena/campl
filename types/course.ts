@@ -5,7 +5,7 @@ export type Lesson = {
     number: number;
     videoId: number;
     text: string;
-    sourceUrl?: string; // Make it optional
+    sourceUrl?:  string | null; // Make it optional
 }
 
 export type Chapter = {

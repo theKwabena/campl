@@ -1,9 +1,11 @@
 
-import {findCourse} from "~/server/helper.local";
+import {findCourse} from "~/server/helper";
 import {Chapter} from "~/types/course";
 
-export default defineEventHandler((event) : Chapter[] => {
+export default defineEventHandler(async (event) => {
     // @ts-ignore
     const {courseSlug } = event.context.params
-    return findCourse(courseSlug).chapters
+    const course =  await findCourse(courseSlug)
+
+    return course.chapters
 })

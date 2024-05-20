@@ -1,8 +1,8 @@
-import {findChapter} from "~/server/helper.local";
+import {findChapter} from "~/server/helper";
 import {Chapter} from "~/types/course";
 
-export default defineEventHandler((event) : Chapter => {
+export default defineEventHandler(async (event) : Promise<Chapter> => {
     // @ts-ignore
     const {courseSlug, chapterSlug} = event.context.params
-    return findChapter(courseSlug,chapterSlug)
+    return await findChapter(courseSlug,chapterSlug)
 })

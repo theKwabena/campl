@@ -1,9 +1,9 @@
 
-import {findLesson} from "~/server/helper.local";
+import {findLesson} from "~/server/helper";
 import {Lesson} from "~/types/course";
 
-export default defineEventHandler((event): Lesson => {
+export default defineEventHandler(async (event): Promise<Lesson> => {
     // @ts-ignore
     const {courseSlug, chapterSlug, lessonSlug} = event.context.params
-    return findLesson(courseSlug,chapterSlug,lessonSlug)
+    return await findLesson(courseSlug,chapterSlug,lessonSlug)
 })

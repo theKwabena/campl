@@ -2,13 +2,16 @@
 
 
 import {
+    Course,
+    Chapter,
+    Lesson,
     OutlineChapter,
     OutlineBase,
     OutlineCourse,
     CourseMeta
 } from "~/types/course"
 import courses from "~/server/api/courses";
-import { PrismaClient, Lesson, Chapter, Course } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 
 
 import chapters from "~/server/api/courses/[courseSlug]/chapters";
