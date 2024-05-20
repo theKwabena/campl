@@ -1,5 +1,5 @@
 
-import {findLesson} from "~/server/helper";
+import {findLesson} from "~/server/helper.local";
 import {Lesson} from "~/types/course";
 
 export default defineEventHandler((event): Lesson => {

@@ -1,6 +1,6 @@
 <template>
-  <div class="h-screen bg-home">
-    <div class="bg-white p-5 flex justify-between items-center border-b-2 border-black">
+  <div class="h-screen bg-def">
+    <div class="bg-white p-5 px-20 flex justify-between items-center border-b-2 border-black">
       <div>
         <p> The Class</p>
       </div>
@@ -22,16 +22,19 @@
       </div>
     </div>
 
-    <div class="p-32 flex justify-around">
-      <div class="w-5/12 space-y-8">
-        <p class="text-7xl font-bold"> Explore <span class="text-red-500">limitless learning </span> with CaMpl</p>
+    <div class="p-32 flex justify-between mx-36">
+      <div class="w-6/12 space-y-8">
+
+        <p class="text-7xl font-bold">  <span><NuxtImg src="/illustrations/curly-line.svg" class="absolute top-40 left-52"/></span> Explore limitless learning with <span> <NuxtImg src="/illustrations/circle.svg" class="absolute top-[18%]"/> </span> CaMpl</p>
+        <NuxtImg src="/illustrations/pointer.svg" class="absolute top-[32%] left-[48%] h-10 w-10" />
         <p class="text-sm leading-6">
           Explore a diverse range of expert-curated courses caters to learners of all backgrounds and interests.
           Join a vibrant community, engage in flexible learning, and embark on a journey of self-discovery.
           Start exploring today and unleash your full potential!</p>
+
         <div class="space-x-3">
           <button class="bg-black">
-            <span class="text-red-500 block p-1 px-5 bg-amber-500 border-2 border-black -translate-x-[3px] -translate-y-[4px] active:translate-x-0 active:translate-y-0">
+            <span class="block p-1 px-5 bg-amber-500 border-2 border-black -translate-x-[3px] -translate-y-[4px] active:translate-x-0 active:translate-y-0">
                 Get Started
             </span>
           </button>

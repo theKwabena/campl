@@ -1,5 +1,5 @@
 
-import {findCourse} from "~/server/helper";
+import {findCourse} from "~/server/helper.local";
 import {Course, CourseMeta} from "~/types/course";
 
 export default defineEventHandler((event) : Course | CourseMeta=> {

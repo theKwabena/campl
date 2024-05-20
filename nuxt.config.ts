@@ -1,10 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ['@vueuse/nuxt', "@nuxtjs/supabase", "@nuxt/image"],
+  modules: ['nuxt-svgo', '@vueuse/nuxt', "@nuxtjs/supabase", "@nuxt/image"],
   svgo: {
     autoImportPath: false
   },
-  image: {},
+
   supabase: {
     redirect: false,
   },

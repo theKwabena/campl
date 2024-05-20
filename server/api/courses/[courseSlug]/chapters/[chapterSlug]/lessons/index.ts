@@ -1,5 +1,5 @@
 
-import {findChapter} from "~/server/helper";
+import {findChapter} from "~/server/helper.local";
 import {Lesson} from "~/types/course";
 
 export default defineEventHandler((event) : Lesson[] => {

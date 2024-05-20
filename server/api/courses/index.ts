@@ -8,7 +8,7 @@ export default defineEventHandler( async (event) => {
    const { meta } = getQuery(event)
 
 
-   // return allCourses(meta as boolean)
-   return prisma.course.findMany();
+   return allCourses(meta as boolean)
+   // return prisma.course.findMany();
 
 })
