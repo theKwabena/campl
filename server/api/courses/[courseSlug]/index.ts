@@ -1,6 +1,6 @@
 
 import {findCourse} from "~/server/helper";
-import {Course, CourseMeta} from "~/types/course";
+
 
 export default defineEventHandler( async (event) => {
     // @ts-ignore
