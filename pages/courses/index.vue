@@ -14,11 +14,11 @@ useHead({
 
 <template>
   <div>
-    <h1> Welcome to  theClass </h1>
-    <p> Here are our courses</p>
     <ul v-for="course in courses" :key="course.id">
-      <li>
-        <NuxtLink :to="`/courses/${course.slug}`"> {{course.title}} </NuxtLink>
+      <li class="flex p-10 bg-blue-300">
+        <div class="bg-red-500">
+          <NuxtLink :to="`/courses/${course.slug}`"> {{course.title}} </NuxtLink>
+        </div>
       </li>
     </ul>
   </div>

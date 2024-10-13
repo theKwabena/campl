@@ -6,7 +6,7 @@
       </div>
 
       <div class="space-x-5">
-        <NuxtLink> Courses</NuxtLink>
+        <NuxtLink :to="courses"> Courses</NuxtLink>
         <NuxtLink> About</NuxtLink>
         <NuxtLink> Pricing</NuxtLink>
         <NuxtLink> Special Offers</NuxtLink>
